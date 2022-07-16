@@ -1,0 +1,49 @@
+{
+  "name": "myblogproject",
+  "version": "1.0.0",
+  "description": "博客工程, 产出的内容是myBlog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "npm run docs:dev",
+    "build": "npm run docs:build",
+    "docs:dev": "vuepress dev docs ",
+    "docs:build": "vuepress build docs",
+    "commit": "git-cz"
+  },
+  "keywords": [
+    "interview"
+  ],
+  "author": "tangfeng",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.9.7",
+    "vuepress-theme-reco": "1.5.7",
+    "yorkie": "^2.0.0",
+    "lint-staged": "^12.4.2",
+    "commitizen": "^4.2.4",
+    "@commitlint/cli": "^17.0.1",
+    "@commitlint/config-conventional": "^17.0.0"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "gitHooks": {
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "npx commitlint -e"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,vue}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add -A"
+    ]
+  }
+}

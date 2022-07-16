@@ -1,0 +1,19 @@
+name: syncToGitee
+on:
+  push:
+    branches:
+      - master # 提交到master分支时
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror the Github organization repos to Gitee.
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: 'github/feiying-tf' # 表示需要被同步的源端账户名，即我们 Github 的账户名
+          dst: 'gitee/feiying-tf' # 表示需要同步到的目的端账户名，即我们 Gitee 的账户名
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          static_list: 'myBlogProject'
+          force_update: true # 表示启用 git push -f 强制同步（最后两个不加会提交不成功）
+          debug: true
