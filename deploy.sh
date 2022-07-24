@@ -16,5 +16,6 @@ git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:feiying-tf/myBlog.git master:gh-pages
-
+# 上传到阿里云
+git push -f git@182.92.6.56:/home/www/website/ts.git master
 cd -
