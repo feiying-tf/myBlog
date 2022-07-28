@@ -14,6 +14,7 @@ module.exports = {
   themeConfig: {
     // displayAllHeaders: false,
     sidebarDepth: 0,
+    lastUpdated: '上次更新', // 默认是关闭的，在给定一个字符串后，它会作为前缀显示
     // subSidebar: 'auto', // 将多级标题放在右侧，生成子侧边栏
     // 设置导航栏
     nav: [
