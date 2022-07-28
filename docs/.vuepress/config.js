@@ -1,5 +1,5 @@
 // import recoTheme from 'vuepress-theme-reco'
-
+const moment = require('moment')
 module.exports = {
   title: '面试知识点',
   description: '记录前端面试中比较重要的知识点',
@@ -49,4 +49,17 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          // 不要忘了安装 moment
+          const moment = require('moment')
+          moment.locale(lang)
+          return moment(timestamp).fromNow()
+        },
+      },
+    ],
+  ],
 }

@@ -17,13 +17,13 @@
   "author": "tangfeng",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^17.0.1",
+    "@commitlint/config-conventional": "^17.0.0",
+    "commitizen": "^4.2.4",
+    "lint-staged": "^12.4.2",
     "vuepress": "^1.9.7",
     "vuepress-theme-reco": "1.5.7",
-    "yorkie": "^2.0.0",
-    "lint-staged": "^12.4.2",
-    "commitizen": "^4.2.4",
-    "@commitlint/cli": "^17.0.1",
-    "@commitlint/config-conventional": "^17.0.0"
+    "yorkie": "^2.0.0"
   },
   "commitlint": {
     "extends": [
@@ -45,5 +45,8 @@
       "eslint --fix",
       "git add -A"
     ]
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
   }
 }
