@@ -8,6 +8,7 @@ npm run docs:build
 
 # 进入生成的文件夹
 cd docs/.vuepress/dist
+# 复制文件流
 cp -r ../../../tomyBlogWorkFlows/.github ./
 
 git init
