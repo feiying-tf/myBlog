@@ -53,13 +53,18 @@ module.exports = {
     sidebar: [
       {
         title: '基础知识',
-        // path: '/',
-        collapsable: false,
-        children: [{ title: '学前必读', path: '/' }],
+        path: '/',
+        collapsable: true,
+        children: [
+          { title: '导读', path: '/' },
+          { title: 'css', path: '/base/css' },
+          { title: '项目相关', path: '/base/project' },
+        ],
       },
       {
         title: '前端面试',
-        collapsable: false,
+        collapsable: true,
+        path: '/interview/http',
         children: [
           { title: 'http', path: '/interview/http' },
           { title: 'vue-navigation', path: '/interview/vue-navigation' },
@@ -69,13 +74,16 @@ module.exports = {
           { title: '浏览器渲染流程', path: '/interview/browserRender' },
           { title: '版本号管理', path: '/interview/versionNo' },
           { title: '换肤方案', path: '/interview/changeSkin' },
+          { title: 'event-loop', path: '/interview/event-loop' },
+          { title: '前端存储方案', path: '/interview/web-storage' },
+          { title: 'promise', path: '/interview/promise' },
+          { title: 'webpack中的hash', path: '/interview/hash' },
         ],
       },
       {
         title: '技能树',
         // path: '/handbook/ConditionalTypes',
-        collapsable: false,
-        children: [{ title: '条件类型', path: '/newTechTree/1' }],
+        collapsable: true,
       },
     ],
   },

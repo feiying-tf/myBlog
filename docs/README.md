@@ -1,16 +1,5 @@
----
-title: 泛型
-author: 绯影
-date: '2021-12-12'
----
+> 作者：绯影
 
-## Hello VuePress
+## 导读
 
-好好学习，天天向上第三方啊啊撒的方式阿斯蒂芬阿斯蒂芬阿斯蒂芬阿斯蒂芬阿斯蒂芬
-
-分割线
-
-```ts
-// try-link: https://www.baidu.com
-const message = 'Hello World!'
-```
+这儿将记录一些前端基础知识
