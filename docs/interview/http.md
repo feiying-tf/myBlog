@@ -60,4 +60,52 @@ date: '2022-10-15'
      B 发送，A 应答（然后 B 的应答和发送不能合并到一起，就形成了四次挥手）；  
      FIN 标志：希望断开连接
 
-<!-- <LastUpdated /> -->
+## options 请求
+
+1.  为什么会有 options？
+
+- 浏览器的同源策略，就是出于安全考虑，浏览器会限制从脚本发起的跨域 HTTP 请求（比如异步请求 GET, POST, PUT, DELETE,OPTIONS 等等）。
+- 浏览器在处理跨域请求之前，会先对跨域请求做一个分析，将跨域请求分为 2 种：简单请求，和非简单请求
+
+  - 简单请求：
+    > HTTP 请求头限制这几种字段：Accept、Accept-Language、Content-Language、Content-Type、Last-Event-ID
+    > Content-type 只能取：application/x-www-form-urlencoded、multipart/form-data、text/plain
+
+  * 非简单请求
+    > 我们通常会把 token 放到 header 中，并且根据情况把请求头的 content-type 设置成 `application/json;charset=UTF-8`，所以此时就是非简单请求，需要发送 OPTIONS 请求。（注意 axios 的默认请求方法为 `application/json`）
+
+- OPTIONS 方法会返回允许访问的方法。  
+  `Access-Control-Allow-Methods: GET, POST, OPTIONS`
+- 浏览器会根据允许访问的方法决定是否发起第二次请求
+
+2.  怎样避免 options？  
+    请后端的同学为 options 方法设置 `Access-Control-Max-Age` 属性，比如
+
+```java
+response.addHeader( "Access-Control-Max-Age", "3000" ) // 3000s
+```
+
+在指定的时间内，不会再次发起 OPTIONS 预请求，这样只有在第一次请求的时候会有 OPTIONS ，之后浏览器会从缓存里读取响应，也就不会再发送 OPTIONS 请求了。
+
+3. 勾选 devtools 中的 disable cache 后的表现？  
+   勾选了以后，`Access-Control-Max-Age` 将失效，每次都会发出 options 请求
+
+## http 缓存策略
+
+参考：https://os.51cto.com/article/625277.html
+
+1. cache-control（强缓存），etag/if-none-match（协商缓存）
+2. 首先是强缓存，假如设置了`cache-control: max-age=60`，那么在 60s 内再次请求就会直接使用缓存里面的内容。
+3. expires 是 http1.0 的内容，cache-control 是 2.0 的内容，cache-control 的优先级高于 expires
+4. 如果超过 60s 就会采用协商缓存进行处理。协商缓存是第二次请求才会发生的，因为第一次请求会把 etag 或者 last-modified 返回回来。
+5. etag/if-none-match 优先级 > last-modified/if-Modified-Since
+
+## SSL/TLS
+
+1. https = http + SSL/TLS
+2. TLS 由记录协议、握手协议、警告协议、变更密码规范协议、扩展协议等几个子协议组成，综合使用了对称加密、非对称加密、身份认证等许多密码学前沿技术
+3. 套件组成：密钥交换算法 + 签名算法 + 对称加密算法 + （分组模式）+ 摘要算法(hash 算法)
+4. 数字证书的目的：为了解决公钥的信任问题
+5. 如果黑客把证书换成自己的了，那么在证书验证这一步，会检出证书里面的内容，服务器地址不是自己想要的。所以就会不信任。
+6. 服务器公钥在 ECDHE 中只是用解密 server params。而在 RSA 握手中，会用来加密 pre-master
+7. 保证数据的完整性，摘要算法

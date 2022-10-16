@@ -14,9 +14,3 @@ date: '2021-12-12'
 // try-link: https://www.baidu.com
 const message = 'Hello World!'
 ```
-
-````
-```
-foo
-```
-````

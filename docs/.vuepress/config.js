@@ -14,6 +14,15 @@ module.exports = {
   //   key: fs.readFileSync(path.resolve(__dirname, './localhost+1-key.pem')),
   //   cert: fs.readFileSync(path.resolve(__dirname, './localhost+1.pem')),
   // },
+  head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: '/favicon.png',
+      },
+    ],
+  ],
   locales: {
     '/': {
       lang: 'zh-CN', // 可以保证 date 显示按照年/月/日进行显示
@@ -22,7 +31,9 @@ module.exports = {
   themeConfig: {
     // displayAllHeaders: false,
     sidebarDepth: 0,
-    lastUpdated: '上次更新', // 默认是关闭的，在给定一个字符串后，它会作为前缀显示
+    // lastUpdated 默认是关闭的，在给定一个字符串后，它会作为前缀显示，注意这个功能是基于当前文件的commit时间生成的。
+    // 所以要想生成时间，必须把当前文件commit 1次，然后重新运行。commit之后再执行 `sh deploy.sh`
+    lastUpdated: '上次更新',
     subSidebar: 'auto', // 将多级标题放在右侧，生成子侧边栏
     // 设置导航栏
     nav: [
@@ -48,11 +59,16 @@ module.exports = {
       },
       {
         title: '前端面试',
-        // path: '/handbook/ConditionalTypes',
         collapsable: false,
         children: [
-          { title: 'http', path: '/handbook/http' },
-          { title: '泛型', path: '/handbook/Generics' },
+          { title: 'http', path: '/interview/http' },
+          { title: 'vue-navigation', path: '/interview/vue-navigation' },
+          { title: 'vue3', path: '/interview/vue3' },
+          { title: 'async+await', path: '/interview/async+await' },
+          { title: '前端性能优化', path: '/interview/performanceOpt' },
+          { title: '浏览器渲染流程', path: '/interview/browserRender' },
+          { title: '版本号管理', path: '/interview/versionNo' },
+          { title: '换肤方案', path: '/interview/changeSkin' },
         ],
       },
       {
