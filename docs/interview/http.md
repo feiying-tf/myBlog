@@ -112,11 +112,11 @@ response.addHeader( "Access-Control-Max-Age", "3000" ) // 3000s
 6. 服务器公钥在 ECDHE 中只是用解密 server params。而在 RSA 握手中，会用来加密 pre-master
 7. 保证数据的完整性，摘要算法
 8. 数字签名 = 私钥 + 摘要 + RSA（是一种非对称加密）
-9. 1 -- client_write_MAC_secret 客户端 MAC 密钥，生成消息的认证码，对方用其验证消息
-   2 -- server_write_MAC_secret 服务器 MAC 密钥，生成消息的认证码，对方用其验证消息
-   3 -- client_write_key 客户端加密密钥，加密客户端发送的消息，对方用其解密
-   4 -- server_write_key 服务器加密密钥，服务器加密发送的消息，对方用其解密
-   5 -- client_write_IV 客户端 IV，与客户端加密密钥配合使用(分组密码算法)
-   6 -- server_write_IV 服务器 IV，与服务器加密密钥配合使用(分组密码算法)
+   > 1 -- client_write_MAC_secret 客户端 MAC 密钥，生成消息的认证码，对方用其验证消息
+   > 2 -- server_write_MAC_secret 服务器 MAC 密钥，生成消息的认证码，对方用其验证消息
+   > 3 -- client_write_key 客户端加密密钥，加密客户端发送的消息，对方用其解密
+   > 4 -- server_write_key 服务器加密密钥，服务器加密发送的消息，对方用其解密
+   > 5 -- client_write_IV 客户端 IV，与客户端加密密钥配合使用(分组密码算法)
+   > 6 -- server_write_IV 服务器 IV，与服务器加密密钥配合使用(分组密码算法)
 
 再发 Finished 的时候，把之前所有发送的数据做个摘要，再加密一下，让服务器做个验证。（这时采用的是摘要算法），验证了完整性。
