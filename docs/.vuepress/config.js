@@ -53,12 +53,32 @@ module.exports = {
     sidebar: [
       {
         title: '基础知识',
-        path: '/',
+        path: '/base/css',
         collapsable: true,
         children: [
-          { title: '导读', path: '/' },
+          // { title: '导读', path: '/' },
           { title: 'css', path: '/base/css' },
           { title: '项目相关', path: '/base/project' },
+        ],
+      },
+      {
+        title: 'Demo',
+        path: '/demo/animateToDom',
+        collapsable: true,
+        children: [
+          { title: '给dom添加动画', path: '/demo/animateToDom' },
+          { title: 'vue页面动画', path: '/demo/vueAnimation' },
+          { title: '打印方案', path: '/demo/print' },
+        ],
+      },
+      {
+        title: '开发中遇到的坑',
+        path: '/problemInDev/uniapp',
+        collapsable: true,
+        children: [
+          { title: 'uniapp', path: '/problemInDev/uniapp' },
+          { title: 'h5', path: '/problemInDev/h5' },
+          { title: 'ant-design-vue', path: '/problemInDev/ant-design-vue' },
         ],
       },
       {
@@ -78,6 +98,7 @@ module.exports = {
           { title: '前端存储方案', path: '/interview/web-storage' },
           { title: 'promise', path: '/interview/promise' },
           { title: 'webpack中的hash', path: '/interview/hash' },
+          { title: 'h5适配方案', path: '/interview/adaptation' },
         ],
       },
       {
