@@ -44,7 +44,7 @@ module.exports = {
           // { text: 'Github', link: 'https://github.com/mqyqingfeng' },
           {
             text: '掘金',
-            link: 'https://juejin.cn/user/712139234359182/posts',
+            link: 'https://juejin.cn/user/2013961034411288/posts',
           },
         ],
       },
