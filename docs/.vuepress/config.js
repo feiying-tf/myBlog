@@ -41,7 +41,7 @@ module.exports = {
       {
         text: '博客',
         items: [
-          { text: 'Github', link: 'https://github.com/mqyqingfeng' },
+          // { text: 'Github', link: 'https://github.com/mqyqingfeng' },
           {
             text: '掘金',
             link: 'https://juejin.cn/user/712139234359182/posts',
@@ -59,6 +59,7 @@ module.exports = {
           // { title: '导读', path: '/' },
           { title: 'css', path: '/base/css' },
           { title: '项目相关', path: '/base/project' },
+          { title: 'Blob', path: '/base/blob' },
         ],
       },
       {
