@@ -22,6 +22,13 @@ module.exports = {
         href: '/favicon.png',
       },
     ],
+    [
+      'meta',
+      {
+        name: 'referrer',
+        content: 'no-referrer',
+      },
+    ],
   ],
   locales: {
     '/': {
@@ -59,7 +66,11 @@ module.exports = {
           // { title: '导读', path: '/' },
           { title: 'css', path: '/base/css' },
           { title: '项目相关', path: '/base/project' },
-          { title: 'Blob', path: '/base/blob' },
+          { title: 'blob', path: '/base/blob' },
+          // { title: 'bash', path: '/base/bash' },
+          { title: 'stylelint', path: '/base/stylelint' },
+          { title: 'eslint', path: '/base/eslint' },
+          { title: 'npm', path: '/base/npm' },
         ],
       },
       {

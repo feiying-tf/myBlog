@@ -120,3 +120,18 @@ response.addHeader( "Access-Control-Max-Age", "3000" ) // 3000s
    > 6 -- server_write_IV 服务器 IV，与服务器加密密钥配合使用(分组密码算法)
 
 再发 Finished 的时候，把之前所有发送的数据做个摘要，再加密一下，让服务器做个验证。（这时采用的是摘要算法），验证了完整性。
+
+## https 使用遇到的问题
+
+1. `http` 网页无法加载 `https` 的网页，报 403
+
+解决方法：
+
+```html
+<meta name="referrer" content="no-referrer" />
+```
+
+- http 请求头中有一个 referrer 字段，用来表示发起 http 请求的源地址信息服务器端在拿到这个 referrer 值后判断请求是否来自本站若不是则返回 403，从而实现图片的防盗链。
+- 上面出现 403 就是因为，请求的是别人服务器上的资源，但把自己的 referrer 信息带过去了，被对方服务器拦截返回了 403
+- 在前端可以通过 meta 来设置 referrer policy(来源策略)，referrer 设置成 no-referrer，发送请求不会带上 referrer
+  信息，对方服务器也就无法拦截了
