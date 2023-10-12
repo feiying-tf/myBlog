@@ -43,7 +43,7 @@ less 也是如此，less 的规则是 `less/xxxx`
 
 #### 5. stylelint-config-recommended-vue
 
-1. 使用时，<style>里面的 `.xxx` 会报错，所以最好不好使用，对 `stylelint-config-recommended` 进行扩展，捆绑 `postss-html` 自定义语法并对其进行配置，那么 `overrides` 里面的 `postcss-html` 就只需要设置 `html` 文件
+1. 使用时，`<style>`里面的 `.xxx` 会报错，所以最好不好使用，对 `stylelint-config-recommended` 进行扩展，捆绑 `postss-html` 自定义语法并对其进行配置，那么 `overrides` 里面的 `postcss-html` 就只需要设置 `html` 文件
 
 ```js
 overrides: [
